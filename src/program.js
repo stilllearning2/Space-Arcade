@@ -57,8 +57,8 @@ function fireTorpedoHandler() {
     // Fire the photon torpedo!
     // CSS animation occurs whenever torpedo
     // 'left' property changes value
-    torpedo.style.visibility = "visible";
-    torpedo.style.left = (rocket.x - 200) + "px";
+    torpedo.img.style.visibility = "visible";
+    torpedo.img.style.left = (rocket.x - 200) + "px";
 }
 
 function render() {
