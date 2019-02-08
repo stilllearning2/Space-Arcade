@@ -15,7 +15,6 @@ var UFODOWN = 122;
 var velocity = 2;
 
 // DOM elements
-var torpedo = document.querySelector("#torpedo");
 var startBtn = document.querySelector("#start");
 var fireBtn = document.querySelector("#fire");
 var introScreen = document.querySelector("#introScreen");
@@ -28,9 +27,18 @@ var rocket = {
         y: 390,
         width: 100
     };
+
 // ufo object
 var ufo = {
         img: document.querySelector("#ufo"),
+        x: 0,
+        y: 0,
+        width: 100
+    };
+
+// torpedo object
+var torpedo = {
+        img: document.querySelector("#torpedo"),
         x: 0,
         y: 0,
         width: 100
@@ -42,6 +50,7 @@ function startGameHandler() {
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
+    torpedo.img.style.display = "none";
 }
 
 function fireTorpedoHandler() {
@@ -59,8 +68,8 @@ function render() {
     torpedo.style.left = (rocket.x + 10) + "px";
     torpedo.style.top = (rocket.y + 8) + "px";
     torpedo.style.visibility = "hidden";
-    if (torpedo.style.left < ufo.x + 100) {
-        if (torpedo.style.top < ufo.y + 100 && torpedo.style.top > ufo.y) {
+    if (torpedo.x < ufo.x + 100) {
+        if (torpedo.y < ufo.y + 100 && torpedo.y > ufo.y) {
             // audio explosion
             torpedo.style.display = "none";
             ufo.style.display = "none";
