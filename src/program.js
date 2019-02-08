@@ -65,9 +65,9 @@ function render() {
     // position objects on the screen
     rocket.img.style.left = rocket.x + "px";
     rocket.img.style.top = rocket.y + "px";
-    torpedo.style.left = (rocket.x + 10) + "px";
-    torpedo.style.top = (rocket.y + 8) + "px";
-    torpedo.style.visibility = "hidden";
+    torpedo.img.style.left = (rocket.x + 10) + "px";
+    torpedo.img.style.top = (rocket.y + 8) + "px";
+    torpedo.img.style.visibility = "hidden";
     if (torpedo.x < ufo.x + 100) {
         if (torpedo.y < ufo.y + 100 && torpedo.y > ufo.y) {
             // audio explosion
