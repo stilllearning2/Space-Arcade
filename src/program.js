@@ -8,11 +8,11 @@ var UP = 38;
 var DOWN = 40;
 var RIGHT = 39;
 var LEFT = 37;
-var UFOUP = 119;
-var UFODOWN = 122;
+var UFOUP = "w";
+var UFODOWN = "z";
 
 // Velocity
-var velocity = 2;
+var velocity = 5;
 
 // DOM elements
 var startBtn = document.querySelector("#start");
@@ -32,7 +32,7 @@ var rocket = {
 var ufo = {
         img: document.querySelector("#ufo"),
         x: 0,
-        y: 0,
+        y: 66,
         width: 100
     };
 
@@ -52,29 +52,53 @@ function startGameHandler() {
     ufo.img.style.display = "block";
 }
 
+function impact(elem1, elem2) {
+    const rec1 = elem1.getBoundingClientRect();
+    const rec2 = elem2.getBoundingClientRect();
+
+    return !(
+      rec1.top > rec2.bottom ||
+      rec1.right < rec2.left ||
+      rec1.bottom < rec2.top ||
+      rec1.left > rec2.right
+    );
+}
+
+function checkForHit() {
+    // check for hit
+    if (impact(torpedo.img, ufo.img)) {
+        // audio explosion
+        torpedo.img.style.display = "none";
+        ufo.img.style.display = "none";
+    }
+}
+
 function fireTorpedoHandler() {
     // Fire the photon torpedo!
     // CSS animation occurs whenever torpedo
     // 'left' property changes value
     torpedo.img.style.visibility = "visible";
     torpedo.img.style.left = (rocket.x - 200) + "px";
+
+    window.setTimeout(checkForHit,500);
 }
 
 function render() {
     // position objects on the screen
+    // keep on screen
+    if (rocket.x < 0) { rocket.y = 0; }
+    if (rocket.y < 66) { rocket.y = 66; }
+    if (rocket.x > 502) { rocket.x = 502; }
+    if (rocket.y > 402) { rocket.y = 402; }
+    if (ufo.y < 66) { ufo.y = 66; }
+    if (ufo.y > 384) { ufo.y = 384; }
     rocket.img.style.left = rocket.x + "px";
     rocket.img.style.top = rocket.y + "px";
+    ufo.img.style.left = ufo.x + "px";
+    ufo.img.style.top = ufo.y + "px";
     torpedo.img.style.left = (rocket.x + 10) + "px";
     torpedo.img.style.top = (rocket.y + 8) + "px";
     torpedo.img.style.visibility = "hidden";
-    if (torpedo.img.style.left < ufo.img.style.left + 100) {
-        if (torpedo.img.style.top > ufo.img.style.top + 100
-            && torpedo.img.style.top < ufo.img.style.top) {
-            // audio explosion
-            torpedo.style.display = "none";
-            ufo.style.display = "none";
-        }
-    }
 }
 
 function keydownHandler(event) {
@@ -91,10 +115,10 @@ function keydownHandler(event) {
     if (event.keyCode === RIGHT) {
         rocket.x += velocity;
     }
-    if (event.keyCode === UFOUP) {
+    if (event.key === UFOUP) {
         ufo.y -= velocity;
     }
-    if (event.keyCode === UFODOWN) {
+    if (event.key === UFODOWN) {
         ufo.y += velocity;
     }
 
