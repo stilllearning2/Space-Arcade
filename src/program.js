@@ -50,7 +50,6 @@ function startGameHandler() {
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
-    torpedo.img.style.display = "none";
 }
 
 function fireTorpedoHandler() {
@@ -68,8 +67,9 @@ function render() {
     torpedo.img.style.left = (rocket.x + 10) + "px";
     torpedo.img.style.top = (rocket.y + 8) + "px";
     torpedo.img.style.visibility = "hidden";
-    if (torpedo.x < ufo.x + 100) {
-        if (torpedo.y < ufo.y + 100 && torpedo.y > ufo.y) {
+    if (torpedo.img.style.left < ufo.img.style.left + 100) {
+        if (torpedo.img.style.top > ufo.img.style.top + 100
+            && torpedo.img.style.top < ufo.img.style.top) {
             // audio explosion
             torpedo.style.display = "none";
             ufo.style.display = "none";
