@@ -59,8 +59,8 @@ function render() {
     torpedo.style.left = (rocket.x + 10) + "px";
     torpedo.style.top = (rocket.y + 8) + "px";
     torpedo.style.visibility = "hidden";
-    if (torpedo.style.left < ufo.style.left + 100) {
-        if (torpedo.style.top < ufo.style.top + 100 && torpedo.style.top > ufo.style.top) {
+    if (torpedo.style.left < ufo.x + 100) {
+        if (torpedo.style.top < ufo.y + 100 && torpedo.style.top > ufo.y) {
             // audio explosion
             torpedo.style.display = "none";
             ufo.style.display = "none";
