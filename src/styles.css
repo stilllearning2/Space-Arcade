@@ -102,7 +102,7 @@ button:hover {
 	line-height: 1em;
 }
 #gameInfo {
-	width: 260px;
+	width: 290px;
 	height: 120px;
 	font-size: 120%;
 	float: left;
@@ -111,11 +111,13 @@ button:hover {
 	width: 140px;
 	height: 55px;
 	padding-top: 5px;
+	padding-left: 10px;
 	float:left;
 }
 #gameControls {
 	width: 100px;
 	height: 55px;
 	padding-top: 5px;
+	padding-left: 10px;
 	float:left;
 }
