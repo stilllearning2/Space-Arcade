@@ -16,6 +16,7 @@ var velocity = 5;
 
 // DOM elements
 var startBtn = document.querySelector("#start");
+var audioBtn = documet.querySelector("#audio");
 var fireBtn = document.querySelector("#fire");
 var introScreen = document.querySelector("#introScreen");
 var gameScreen = document.querySelector("#gameScreen");
@@ -62,11 +63,15 @@ var allowSound = true;
 
 // audio functions
 function toggleSound(){
+    const elem = document.querySelector("#audio");
     if (allowSound === true) {
         allowSound = false;
+        elem.innerHTML = "Audio Off"
     } else {
-        allowSound = true;
+        allowSound = true;           
+        elem.innerHTML = "Audio Off"
     }
+    elem = null;
 }
 
 function doneAudio(ev) {
@@ -200,7 +205,7 @@ function keydownHandler(event) {
 //document.addEventListener("DOMContentLoaded", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", fireTorpedoHandler, false);
-// soundBtn.addEventListener("click", toggleSound, false);
+soundBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
 
 render();
