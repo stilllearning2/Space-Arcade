@@ -102,19 +102,19 @@ button:hover {
 	line-height: 1em;
 }
 #gameInfo {
-	width: 400px;
+	width: 2100px;
 	height: 120px;
 	font-size: 120%;
 	float: left;
 }
 #gameAudio {
-	width: 50px;
+	width: 140px;
 	height: 55px;
 	padding-top: 5px;
 	float:left;
 }
 #gameControls {
-	width: 50px;
+	width: 100px;
 	height: 55px;
 	padding-top: 5px;
 	float:left;
