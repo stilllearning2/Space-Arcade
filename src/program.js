@@ -115,7 +115,7 @@ function startGameHandler() {
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
-    explosion.img.style.visibility="none";
+    explosion.img.style.display = "none";
 }
 
 function impact(elem1, elem2) {
