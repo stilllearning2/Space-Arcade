@@ -66,10 +66,8 @@ function toggleSound(){
     const elem = document.querySelector("#audio");
     if (allowSound === true) {
         allowSound = false;
-        elem.innerHTML = "Audio Off";
     } else {
         allowSound = true;
-        elem.innerHTML = "Audio Off";
     }
 }
 
