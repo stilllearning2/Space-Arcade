@@ -59,6 +59,7 @@ const SOUNDS = {
     "explosion":null
 };
 
+var sound= null;
 var allowSound = true;
 
 // audio functions
@@ -132,13 +133,21 @@ function explode() {
     explosion.img.style.visibility = "visible";
 }
 
+function playSound(soundObj) {
+        if (sound !== null) {
+            sound.pause();
+            sound = null;
+        }
+        sound = document.getElementById(soundObj);
+        sound.Play();
+}
+
 function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
         // audio explosion
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
-        explode();
     }
 }
 
@@ -148,7 +157,7 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     torpedo.img.style.visibility = "visible";
     torpedo.img.style.left = (rocket.x - 200) + "px";
-
+    playSound("torpedo");
     window.setTimeout(checkForHit,500);
 }
 
