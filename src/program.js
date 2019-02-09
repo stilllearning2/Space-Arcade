@@ -44,6 +44,68 @@ var torpedo = {
         width: 100
     };
 
+// ufo object
+var explosion = {
+        img: document.querySelector("#explosion"),
+        x: 0,
+        y: 66,
+        width: 142
+    };
+
+// audio elements
+const SOUNDS = {
+    "photon-torpedo":null,
+    "explosion":null
+};
+
+var allowSound = true;
+
+// audio functions
+function toggleSound(){
+    if (allowSound === true) {
+        allowSound = false;
+    } else {
+        allowSound = true;
+    }
+}
+
+function doneAudio(ev) {
+    var fn = ev.target.getAttribute["data-file"];
+    SOUNDS[fn].pause();
+    SOUNDS[fn] = null;
+}
+
+function play(ev) {
+    // identify current object
+    var elem = ev.currentTarget();
+    ev.preventDefault;
+
+    // set fn and src variables
+    var fn = elem.getAttribute("data-file");
+    var src = "../audio/" + fn + ".mp3";
+
+    // if audio is playing, stop it first
+    if (SOUNDS[fn]) {
+        SOUNDS[fn].pause();
+        SOUNDS[fn] = null;
+    }
+
+    // create audio element and set src
+    var audio = document.createElement("audio");
+    audio.src = src;
+    audio.volumne = 0.5; // volume setting
+    if (allowSound) {
+        // set SOUNDS element = audio and play
+        SOUNDS[fn] = audio;
+        audio.setAttribute("data-file", fn);
+        audio.play();
+    }
+
+    // create event listener for when audio ends
+    audio.addEventListener("ended", doneAudio);
+}
+
+
 function startGameHandler() {
     // Hide the intro screen, show the game screen
     introScreen.style.display = "none";
@@ -57,11 +119,14 @@ function impact(elem1, elem2) {
     const rec2 = elem2.getBoundingClientRect();
 
     return !(
-      rec1.top > rec2.bottom ||
-      rec1.right < rec2.left ||
-      rec1.bottom < rec2.top ||
-      rec1.left > rec2.right
+      rec1.top > rec2.bottom || rec1.right < rec2.left ||
+      rec1.bottom < rec2.top || rec1.left > rec2.right
     );
+}
+function explode() {
+    explosion.img.style.left = (ufo.x) + "px";
+    explosion.img.style.top = (ufo.y) + "px";
+    explosion.img.style.visibility = "visible";
 }
 
 function checkForHit() {
@@ -70,6 +135,7 @@ function checkForHit() {
         // audio explosion
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
+        explode();
     }
 }
 
@@ -125,9 +191,15 @@ function keydownHandler(event) {
     render();
 }
 
+//function init() {
+
+//}
+
 // Initialize objects on the screen
+//document.addEventListener("DOMContentLoaded", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", fireTorpedoHandler, false);
+// soundBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
 
 render();
