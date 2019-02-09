@@ -138,8 +138,10 @@ function playSound(soundObj) {
             sound.pause();
             sound = null;
         }
-        sound = document.getElementById(soundObj);
-        sound.Play();
+        if (allowSound) {
+            sound = document.getElementByClass(soundObj);
+            sound.Play();
+        }
 }
 
 function checkForHit() {
@@ -148,6 +150,7 @@ function checkForHit() {
         // audio explosion
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
+        playSound("explosion");
     }
 }
 
@@ -157,7 +160,8 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     torpedo.img.style.visibility = "visible";
     torpedo.img.style.left = (rocket.x - 200) + "px";
-    playSound("torpedo");
+    playSound("photon-torpedo");
+    // after torpedo finishes, check for connection    
     window.setTimeout(checkForHit,500);
 }
 
