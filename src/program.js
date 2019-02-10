@@ -115,8 +115,7 @@ function playSound(soundObj) {
     // if sound on, play audio
     if (allowSound) {
         fn = "../audio/" + soundObj + ".mp3";
-        alert(fn);
-        audio.setAttribute(fn);
+        audio.setAttribute("src", fn);
         audio.play();
     }
 }
