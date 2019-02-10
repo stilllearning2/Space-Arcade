@@ -103,6 +103,7 @@ function startGameHandler() {
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
+    torpedo.img.style.display = "none";
     explosion.img.style.display = "none";
 }
 
@@ -125,6 +126,8 @@ function hideExplosion() {
 }
 
 function checkForHit() {
+    // hide torpedo, ufo
+    torpedo.img.style.display = "none";
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
         // move and display explosion
@@ -132,12 +135,12 @@ function checkForHit() {
         explosion.img.style.top = ufo.img.style.top;
         explosion.img.style.display="block";
 
-        // play explosion
-        playSound("explosion");
-
         // hide torpedo, ufo
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
+
+        // play explosion
+        playSound("explosion");
 
         // hide explosion
         setTimeout(hideExplosion, 2000);  // 5 seconds
