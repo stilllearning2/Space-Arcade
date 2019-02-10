@@ -59,7 +59,8 @@ const SOUNDS = {
     "explosion":null
 };
 
-var sound= null;
+var audio = document.createElement("audio");
+audio.src = null;
 var allowSound = true;
 
 // audio functions
@@ -78,35 +79,6 @@ function doneAudio(ev) {
     SOUNDS[fn] = null;
 }
 
-function play(ev) {
-    // identify current object
-    var elem = ev.currentTarget();
-    ev.preventDefault;
-
-    // set fn and src variables
-    var fn = elem.getAttribute("data-file");
-    var src = "../audio/" + fn + ".mp3";
-
-    // if audio is playing, stop it first
-    if (SOUNDS[fn]) {
-        SOUNDS[fn].pause();
-        SOUNDS[fn] = null;
-    }
-
-    // create audio element and set src
-    var audio = document.createElement("audio");
-    audio.src = src;
-    audio.volumne = 0.5; // volume setting
-    if (allowSound) {
-        // set SOUNDS element = audio and play
-        SOUNDS[fn] = audio;
-        audio.setAttribute("data-file", fn);
-        audio.play();
-    }
-
-    // create event listener for when audio ends
-    audio.addEventListener("ended", doneAudio);
-}
 
 
 function startGameHandler() {
@@ -134,22 +106,34 @@ function explode() {
 }
 
 function playSound(soundObj) {
-        if (sound !== null) {
-            sound.pause();
-            sound = null;
+    // if audio is playing, stop it
+    if (audio !== null) {
+        audio.pause();
+        audio = null;
+    }
+
+    // if sound on, play audio
+    if (allowSound) {
+        if (audio.canPlayType("audio/mpeg")) {
+            audio.setAttribute("src","../audio/" + soundObj + ".mp3");
+        } else if (audio.canPlayType("audio/ogg")) {
+            audio.setAttribute("src","../audio/" + soundObj + ".ogg");
         }
-        if (allowSound) {
-            sound = document.getElementByClass(soundObj);
-            sound.Play();
-        }
+        audio.play();
+    }
 }
 
+function hideExplosion() {
+    document.getElementById("explosion").style.display="none";
+}
 function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
         // audio explosion
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
+        document.getElementById("explosion").style.display="block";
+        setTimeout("hide()", 5000);  // 5 seconds
         playSound("explosion");
     }
 }
@@ -161,7 +145,7 @@ function fireTorpedoHandler() {
     torpedo.img.style.visibility = "visible";
     torpedo.img.style.left = (rocket.x - 200) + "px";
     playSound("photon-torpedo");
-    // after torpedo finishes, check for connection    
+    // after torpedo finishes, check for impact
     window.setTimeout(checkForHit,500);
 }
 
@@ -217,5 +201,7 @@ startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", fireTorpedoHandler, false);
 audioBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
+// create event listener for when audio ends
+audio.addEventListener("ended", doneAudio);
 
 render();
