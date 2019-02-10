@@ -150,7 +150,7 @@ function fireTorpedoHandler() {
     // Fire the photon torpedo!
     // CSS animation occurs whenever torpedo
     // 'left' property changes value
-    torpedo.img.style.visibility = "visible";
+    torpedo.img.style.display = "block";
     torpedo.img.style.left = (rocket.x - 200) + "px";
     playSound("tos-photon-torpedo-1");
 
