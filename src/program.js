@@ -11,8 +11,9 @@ var LEFT = 37;
 var UFOUP = "w";
 var UFODOWN = "z";
 
-// Velocity
+// variables
 var velocity = 5;
+var torpedoCount = 10;
 
 // DOM elements
 var startBtn = document.querySelector("#start");
@@ -20,6 +21,7 @@ var audioBtn = document.querySelector("#audio");
 var fireBtn = document.querySelector("#fire");
 var introScreen = document.querySelector("#introScreen");
 var gameScreen = document.querySelector("#gameScreen");
+var gameInfo = document.querySelecor("torpedo-number");
 
 // rocket object
 var rocket = {
@@ -164,6 +166,7 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     torpedo.img.style.display = "block";
     torpedo.img.style.left = (rocket.x - 200) + "px";
+    info.innerHTML("Torpedos: " + torpedoCount--);
     playSound("tos-photon-torpedo-1");
 
     // after torpedo finishes, check for impact
