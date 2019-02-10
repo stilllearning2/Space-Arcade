@@ -84,7 +84,7 @@ function playSound(soundObj) {
     // if audio is playing, stop it
     if (fn !== "") {
         audio.pause();
-        audio = null;
+        audio = "";
     }
 
     // if sound on, play audio
