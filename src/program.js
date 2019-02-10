@@ -114,11 +114,7 @@ function playSound(soundObj) {
 
     // if sound on, play audio
     if (allowSound) {
-        if (audio.canPlayType("audio/mpeg")==="probably") {
-            audio.setAttribute("src","../audio/" + soundObj + ".mp3");
-        } else if (audio.canPlayType("audio/ogg")==="probably") {
-            audio.setAttribute("src","../audio/" + soundObj + ".ogg");
-        }
+        audio.setAttribute("src","../audio/" + soundObj + ".mp3");
         audio.play();
     }
 }
