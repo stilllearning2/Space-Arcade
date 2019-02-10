@@ -83,19 +83,18 @@ function doneAudio(ev) {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (fn !== "") {
-        audio.pause();
-        audio = null;
-        fn = "";
+    if (SOUNDS[stream] !== null) {
+        SOUNDS[stream].pause();
+        SOUNDS[stream] = null;
     }
 
     // if sound on, play audio
     if (allowSound) {
         audio = document.createElement("audio");
-        SOUNDS[stream] = audio;
         stream = soundObj;
         fn = "../audio/" + soundObj + ".mp3";
         audio.setAttribute("src", fn);
+        SOUNDS[stream] = audio;
         audio.play();
 
         // create event listener for when audio ends
