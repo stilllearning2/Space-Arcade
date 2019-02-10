@@ -59,10 +59,9 @@ const SOUNDS = {
     "explosion": null
 };
 
-var audio = document.createElement("audio");
-var stream = ""
-var fn = "";
 var allowSound = true;
+var stream = "";
+var fn = "";
 
 // audio functions
 function toggleSound(){
@@ -82,18 +81,22 @@ function doneAudio(ev) {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (fn !== "") {
+    if (fn !== null) {
         audio.pause();
-        audio = "";
+        audio = null;
     }
 
     // if sound on, play audio
     if (allowSound) {
-        stream = soundObj;
+        var audio = document.createElement("audio");
         SOUNDS[stream] = audio;
+        stream = soundObj;
         fn = "../audio/" + soundObj + ".mp3";
         audio.setAttribute("src", fn);
         audio.play();
+
+        // create event listener for when audio ends
+        audio.addEventListener("ended", doneAudio);
     }
 }
 
@@ -143,7 +146,7 @@ function checkForHit() {
 
         // hide explosion
         setTimeout(hideExplosion, 2000);  // 5 seconds
-    } 
+    }
 }
 
 function fireTorpedoHandler() {
@@ -210,7 +213,5 @@ startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", fireTorpedoHandler, false);
 audioBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
-// create event listener for when audio ends
-audio.addEventListener("ended", doneAudio);
 
 render();
