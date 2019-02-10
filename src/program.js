@@ -60,7 +60,7 @@ const SOUNDS = {
 };
 
 var audio = document.createElement("audio");
-audio.src = null;
+audio.setAttribute("src","");
 var allowSound = true;
 
 // audio functions
@@ -107,7 +107,7 @@ function explode() {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (audio.src !== null) {
+    if (audio.src !== "") {
         audio.pause();
         audio = null;
     }
