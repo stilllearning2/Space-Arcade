@@ -129,7 +129,7 @@ function checkForHit() {
         // move and display explosion
         explosion.img.style.left = ufo.img.style.left;
         explosion.img.style.top = ufo.img.style.top;
-        explosion.style.display="block";
+        explosion.img.style.display="block";
 
         // play explosion
         playSound("explosion");
@@ -139,8 +139,9 @@ function checkForHit() {
         ufo.img.style.display = "none";
 
         // hide explosion
-        setTimeout(hideExplosion, 5000);  // 5 seconds
+        setTimeout(hideExplosion, 2000);  // 5 seconds
     } else {
+        // hide torpedo
         window.setTimeout(hideTorpedo,100);   
     }
 }
