@@ -60,6 +60,7 @@ const SOUNDS = {
 };
 
 var audio = document.createElement("audio");
+var stream = ""
 var fn = "";
 var allowSound = true;
 
@@ -74,8 +75,8 @@ function toggleSound(){
 }
 
 function doneAudio(ev) {
-    SOUNDS[fn].pause();
-    SOUNDS[fn] = null;
+    SOUNDS[stream].pause();
+    SOUNDS[stream] = null;
 }
 
 function playSound(soundObj) {
@@ -87,7 +88,8 @@ function playSound(soundObj) {
 
     // if sound on, play audio
     if (allowSound) {
-        SOUNDS[fn] = audio;
+        stream = soundObj;
+        SOUNDS[stream] = audio;
         fn = "../audio/" + soundObj + ".mp3";
         audio.setAttribute("src", fn);
         audio.play();
@@ -118,7 +120,7 @@ function explode() {
 }
 
 function hideExplosion() {
-    explosion.style.display="none";
+    explosion.img.style.display = "none";
 }
 
 function checkForHit() {
