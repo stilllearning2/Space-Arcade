@@ -83,18 +83,25 @@ function doneAudio(ev) {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (SOUNDS[stream] !== null) {
+    if (SOUNDS[stream]) {
         SOUNDS[stream].pause();
         SOUNDS[stream] = null;
     }
 
     // if sound on, play audio
     if (allowSound) {
-        audio = document.createElement("audio");
+        // get object
         stream = soundObj;
         fn = "../audio/" + soundObj + ".mp3";
+            
+        // instantiate audio and set src
+        audio = document.createElement("audio");
         audio.setAttribute("src", fn);
+            
+        // update SOUNDS attribute
         SOUNDS[stream] = audio;
+            
+        // play sound
         audio.play();
 
         // create event listener for when audio ends
@@ -178,7 +185,7 @@ function render() {
     ufo.img.style.top = ufo.y + "px";
     torpedo.img.style.left = (rocket.x + 10) + "px";
     torpedo.img.style.top = (rocket.y + 8) + "px";
-    torpedo.img.style.visibility = "hidden";
+    torpedo.img.style.display: "none";
 }
 
 function keydownHandler(event) {
