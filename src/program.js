@@ -54,6 +54,11 @@ var explosion = {
     };
 
 // audio elements
+const SOUNDS = {
+    "tos-photon-torpedo-1": null,
+    "explosion": null
+};
+
 var audio = document.createElement("audio");
 var fn = "";
 var allowSound = true;
@@ -69,7 +74,6 @@ function toggleSound(){
 }
 
 function doneAudio(ev) {
-    var fn = ev.target.getAttribute["data-file"];
     SOUNDS[fn].pause();
     SOUNDS[fn] = null;
 }
@@ -83,6 +87,7 @@ function playSound(soundObj) {
 
     // if sound on, play audio
     if (allowSound) {
+        SOUNDS[fn] = audio;
         fn = "../audio/" + soundObj + ".mp3";
         audio.setAttribute("src", fn);
         audio.play();
@@ -107,30 +112,37 @@ function impact(elem1, elem2) {
       rec1.bottom < rec2.top || rec1.left > rec2.right
     );
 }
+
 function explode() {
-    explosion.img.style.left = (ufo.x) + "px";
-    explosion.img.style.top = (ufo.y) + "px";
     explosion.img.style.visibility = "visible";
 }
 
 function hideExplosion() {
-    document.getElementById("explosion").style.display="none";
+    explosion.style.display="none";
 }
 
 function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
-        // audio explosion
+        // move and display explosion
+        explosion.img.style.left = ufo.img.style.left;
+        explosion.img.style.top = ufo.img.style.top;
+        explosion.style.display="block";
+
+        // play explosion
+        playSound("explosion");
+
+        // hide torpedo, ufo
         torpedo.img.style.display = "none";
         ufo.img.style.display = "none";
-        document.getElementById("explosion").style.display="block";
-        setTimeout("hide()", 5000);  // 5 seconds
-        playSound("explosion");
+
+        // hide explosion
+        setTimeout(hideExplosion, 5000);  // 5 seconds
     }
 }
 
 function hideTorpedo() {
-    explosion.img.style.display = "none";       
+    explosion.img.style.display = "none";
 }
 
 function fireTorpedoHandler() {
