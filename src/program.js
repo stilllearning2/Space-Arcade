@@ -140,6 +140,8 @@ function checkForHit() {
 
         // hide explosion
         setTimeout(hideExplosion, 5000);  // 5 seconds
+    } else {
+        window.setTimeout(hideTorpedo,100);   
     }
 }
 
@@ -157,7 +159,6 @@ function fireTorpedoHandler() {
 
     // after torpedo finishes, check for impact
     window.setTimeout(checkForHit,500);
-    window.setTimeout(hideTorpedo,700);
 }
 
 function render() {
