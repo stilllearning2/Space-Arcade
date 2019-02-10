@@ -77,6 +77,7 @@ function toggleSound(){
 function doneAudio(ev) {
     SOUNDS[stream].pause();
     SOUNDS[stream] = null;
+    torpedo.img.style.display = "none";
 }
 
 function playSound(soundObj) {
@@ -140,14 +141,7 @@ function checkForHit() {
 
         // hide explosion
         setTimeout(hideExplosion, 2000);  // 5 seconds
-    } else {
-        // hide torpedo
-        window.setTimeout(hideTorpedo,100);   
-    }
-}
-
-function hideTorpedo() {
-    torpedo.img.style.display = "none";
+    } 
 }
 
 function fireTorpedoHandler() {
