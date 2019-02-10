@@ -129,6 +129,10 @@ function checkForHit() {
     }
 }
 
+function hideTorpedo() {
+    explosion.img.style.display = "none";       
+}
+
 function fireTorpedoHandler() {
     // Fire the photon torpedo!
     // CSS animation occurs whenever torpedo
@@ -139,6 +143,7 @@ function fireTorpedoHandler() {
 
     // after torpedo finishes, check for impact
     window.setTimeout(checkForHit,500);
+    window.setTimeout(hideTorpedo,700);
 }
 
 function render() {
