@@ -83,9 +83,10 @@ function doneAudio(ev) {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (audio !== null) {
+    if (fn !== "") {
         audio.pause();
         audio = null;
+        fn = "";
     }
 
     // if sound on, play audio
