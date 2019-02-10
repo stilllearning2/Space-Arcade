@@ -147,7 +147,7 @@ function checkForHit() {
 }
 
 function hideTorpedo() {
-    explosion.img.style.display = "none";
+    torpedo.img.style.display = "none";
 }
 
 function fireTorpedoHandler() {
