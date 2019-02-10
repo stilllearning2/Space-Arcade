@@ -60,7 +60,7 @@ const SOUNDS = {
 };
 
 var audio = document.createElement("audio");
-audio.setAttribute("src","");
+var fn = "";
 var allowSound = true;
 
 // audio functions
@@ -107,14 +107,16 @@ function explode() {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (audio.src !== "") {
+    if (fn !== "") {
         audio.pause();
         audio = null;
     }
 
     // if sound on, play audio
     if (allowSound) {
-        audio.setAttribute("src","../audio/" + soundObj + ".mp3");
+        fn = "../audio/" + soundObj + ".mp3";
+        alert(fn);
+        audio.setAttribute(fn);
         audio.play();
     }
 }
