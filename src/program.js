@@ -54,11 +54,6 @@ var explosion = {
     };
 
 // audio elements
-const SOUNDS = {
-    "photon-torpedo":null,
-    "explosion":null
-};
-
 var audio = document.createElement("audio");
 var fn = "";
 var allowSound = true;
@@ -79,7 +74,20 @@ function doneAudio(ev) {
     SOUNDS[fn] = null;
 }
 
+function playSound(soundObj) {
+    // if audio is playing, stop it
+    if (fn !== "") {
+        audio.pause();
+        audio = null;
+    }
 
+    // if sound on, play audio
+    if (allowSound) {
+        fn = "../audio/" + soundObj + ".mp3";
+        audio.setAttribute("src", fn);
+        audio.play();
+    }
+}
 
 function startGameHandler() {
     // Hide the intro screen, show the game screen
@@ -105,24 +113,10 @@ function explode() {
     explosion.img.style.visibility = "visible";
 }
 
-function playSound(soundObj) {
-    // if audio is playing, stop it
-    if (fn !== "") {
-        audio.pause();
-        audio = null;
-    }
-
-    // if sound on, play audio
-    if (allowSound) {
-        fn = "../audio/" + soundObj + ".mp3";
-        audio.setAttribute("src", fn);
-        audio.play();
-    }
-}
-
 function hideExplosion() {
     document.getElementById("explosion").style.display="none";
 }
+
 function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
