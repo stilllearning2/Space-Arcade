@@ -103,7 +103,6 @@ function startGameHandler() {
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
-    torpedo.img.style.display = "none";
     explosion.img.style.display = "none";
 }
 
