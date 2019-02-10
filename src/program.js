@@ -60,6 +60,7 @@ const SOUNDS = {
 };
 
 var allowSound = true;
+var audio = null;
 var stream = "";
 var fn = "";
 
@@ -82,14 +83,14 @@ function doneAudio(ev) {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (fn !== "") {
+    if (audio !== null) {
         audio.pause();
         audio = null;
     }
 
     // if sound on, play audio
     if (allowSound) {
-        var audio = document.createElement("audio");
+        audio = document.createElement("audio");
         SOUNDS[stream] = audio;
         stream = soundObj;
         fn = "../audio/" + soundObj + ".mp3";
