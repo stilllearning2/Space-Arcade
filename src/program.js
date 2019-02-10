@@ -76,6 +76,7 @@ function toggleSound(){
 function doneAudio(ev) {
     SOUNDS[stream].pause();
     SOUNDS[stream] = null;
+    fn = "";
     torpedo.img.style.display = "none";
 }
 
