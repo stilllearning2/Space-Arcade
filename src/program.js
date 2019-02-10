@@ -107,7 +107,7 @@ function explode() {
 
 function playSound(soundObj) {
     // if audio is playing, stop it
-    if (audio !== null) {
+    if (audio.src !== null) {
         audio.pause();
         audio = null;
     }
@@ -144,7 +144,8 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     torpedo.img.style.visibility = "visible";
     torpedo.img.style.left = (rocket.x - 200) + "px";
-    playSound("photon-torpedo");
+    playSound("tos-photon-torpedo-1");
+
     // after torpedo finishes, check for impact
     window.setTimeout(checkForHit,500);
 }
