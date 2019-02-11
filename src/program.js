@@ -282,6 +282,7 @@ function init() {
     slowerBtn.addEventListener("click", levelDownHandler, false);
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
+    window.addEventListener("keydown", keydownHandler, false);
 
     render();
 }
