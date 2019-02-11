@@ -170,7 +170,7 @@ function fireTorpedoHandler() {
         if (range < 200) { // if within range,
             // check for time to impact
             const percentToImpact = range / 200.0; // percent time to impact
-            window.setTimeout(checkForHit, percentToImpact * 1000);
+            window.setTimeout(checkForHit, 1000);
         }
         window.setTimeout(hideTorpedo, 1200);
     }
