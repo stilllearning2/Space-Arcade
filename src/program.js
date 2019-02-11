@@ -62,6 +62,8 @@ var explosion = {
         y: 0,
         width: 100
     };
+explosion.iframe.src = "";
+explosion.iframe.style.frameBorder = 0;
 
 // audio elements
 var SOUNDS = {
@@ -131,14 +133,13 @@ function checkForHit() {
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
-        explosion.style.visibility = "visible";
             
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
         ufo.img.style.visibility = "hidden";
 
         // hide explosion
-        window.setTimeout(hideExplosion, 500);  // 5 seconds
+        window.setTimeout(hideExplosion, 600);  // .6 seconds
     }
 }
 
@@ -271,9 +272,6 @@ function startGameHandler() {
     rocket.img.style.display = "block";
     ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
-    explosion.style.visibility = "hidden";
-    explosion.iframe.frameBorder = 0;
-    explosion.iframe.src="";
 
     render();
 }
@@ -285,8 +283,6 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-
-    render();
 }
 
 window.addEventListener("load", init, false);
