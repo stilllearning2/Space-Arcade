@@ -159,7 +159,7 @@ function fireTorpedoHandler() {
     if (torpedoCount > 0) {
         playTorpedo();
         // calculate max range
-        const range = (torpedo.x < 200 ? torpedo.x : 200);
+        const range = (torpedo.x - 50 < 200 ? torpedo.x - 50 : 200);
         window.alert(range);
         torpedo.img.style.left = (torpedo.x - range) + "px";
 
