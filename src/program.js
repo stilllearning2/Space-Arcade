@@ -166,12 +166,8 @@ function fireTorpedoHandler() {
         torpedoCount = torpedoCount - 1;
         gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
-        // after torpedo finishes, check for impact
-        if (range < 200) { // if within range,
-            // check for time to impact
-            const percentToImpact = range / 200.0; // percent time to impact
-            window.setTimeout(checkForHit, 1000);
-        }
+        // after torpedo finishes, check for impact          
+        window.setTimeout(checkForHit, 1000);
         window.setTimeout(hideTorpedo, 1200);
     }
 }
