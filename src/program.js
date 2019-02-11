@@ -156,6 +156,8 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     if (torpedoCount > 0) {
         playTorpedo();
+        // calculate range as % of 200
+        const x = (torpedo.left - ufo.left + 100) / 200.000; 
         torpedo.img.style.left = (rocket.x - 200) + "px";
 
         // update avaiable torpedos
@@ -163,7 +165,10 @@ function fireTorpedoHandler() {
         gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
         // after torpedo finishes, check for impact
-        window.setTimeout(checkForHit, 800);
+        if (x < 1.0) { // if within range, 
+            // check for impact when impact
+            window.setTimeout(checkForHit, x * 1000);
+        }
         window.setTimeout(hideTorpedo, 1200);
     }
 }
