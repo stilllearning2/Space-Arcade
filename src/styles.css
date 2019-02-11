@@ -124,6 +124,11 @@ button:hover {
 	font-size: 120%;
 	float: left;
 }
+
+.gameProgress {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 #gameAudio {
 	width: 120px;
 	height: 55px;
