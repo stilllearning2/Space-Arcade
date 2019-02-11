@@ -57,7 +57,7 @@ var torpedo = {
 
 // explosion object
 var explosion = {
-        iframe: document.querySelector("#explosion"),
+        iframe: document.querySelector("#explosionFrame"),
         x: 10,
         y: 0,
         width: 100
@@ -131,7 +131,8 @@ function checkForHit() {
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
-
+        explosion.iframe.style.visiblilty = "visible";
+            
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
         ufo.img.style.visibility = "hidden";
@@ -271,7 +272,7 @@ function startGameHandler() {
     ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
     explosion.iframe.frameBorder = 0;
-    explosion.iframe.style.display = "block";
+    explosion.iframe.src="";
     explosion.iframe.style.visibility = "hidden";
 
     render();
