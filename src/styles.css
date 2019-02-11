@@ -67,10 +67,15 @@ button:hover {
 	background: -moz-linear-gradient(to top, #acc7a3, #506651);
 	background: linear-gradient(to top, #acc7a3, #506651);	
 }
+#audio, #fire, #slower, #faster {
+    width: 132px;
+}
 
 #fire, faster {
     margin-left: 4px;	
-}#slower, faster {
+}
+
+#slower, faster {
     margin-top: 4px;	
 }
 #gameScreen {
