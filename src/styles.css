@@ -17,7 +17,7 @@ body { margin: 0;
 	margin: 50px auto;
 	padding: 50px 30px;
 	width: 540px;
-	height: 350px;
+	height: 380px;
 	position: relative;
 	background-color: #0d152a;
 	font-family: Arial, Helvetica, sans-serif;
@@ -46,6 +46,7 @@ button {
 	float: left;
 	font-family: spaceAge;
 	font-size: 150%;
+	margin: 4px 7px;
 	padding: 4px 7px;
 	cursor: pointer;
 	color: white;
@@ -121,7 +122,7 @@ button:hover {
 }
 #gameInfo {
 	width: 320px;
-	height: 60px;
+	height: 80px;
 	font-size: 120%;
 	float: left;
 }
