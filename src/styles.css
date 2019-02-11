@@ -43,9 +43,10 @@ body { margin: 0;
 }
 
 button {
+	float: left;
 	font-family: spaceAge;
 	font-size: 150%;
-	padding: 4px 8px;
+	padding: 4px 7px;
 	cursor: pointer;
 	color: white;
 
@@ -129,15 +130,8 @@ button:hover {
     margin-top: 0;
     margin-bottom: 0;
 }
-#gameAudio {
-	width: 120px;
-	height: 55px;
-	padding-top: 5px;
-	padding-left: 7px;
-	float:left;
-}
 #gameControls {
-	width: 100px;
+	width: 200px;
 	height: 55px;
 	padding-top: 5px;
 	padding-left: 7px;
