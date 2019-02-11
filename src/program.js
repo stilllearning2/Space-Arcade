@@ -4,32 +4,34 @@
 "use strict";
 
 // Arrow key codes
-var UP = 38;
-var DOWN = 40;
-var RIGHT = 39;
-var LEFT = 37;
-var UFOUP = "w";
-var UFODOWN = "z";
+var UP = 38,
+    DOWN = 40,
+    RIGHT = 39,
+    LEFT = 37,
+    UFOUP = "w",
+    UFODOWN = "z",
 
 // variables
-var velocity = 2;
-var dilithium = 100;
-var torpedoCount = 10;
-var moves = 0;
-var rand;
-var UFOMIN = 98;
+    velocity = 2,
+    dilithium = 100,
+    torpedoCount = 10,
+    moves = 0,
+    rand, 
+    UFOMIN = 98,
+    allowSound = true,
+    fn;
 
 // DOM elements
-var startBtn = document.querySelector("#start");
-var audioBtn = document.querySelector("#audio");
-var fireBtn = document.querySelector("#fire");
-var slowerBtn = document.querySelector("#slower");
-var fasterBtn = document.querySelector("#faster");
-var introScreen = document.querySelector("#introScreen");
-var gameScreen = document.querySelector("#gameScreen");
-var dilithiumLvl = document.querySelector("#dilithiumLvl");
-var torpedoLvl = document.querySelector("#torpedo-count");
-var level = document.querySelector("#level");
+    startBtn = document.querySelector("#start"),
+    audioBtn = document.querySelector("#audio").
+    fireBtn = document.querySelector("#fire"),
+    slowerBtn = document.querySelector("#slower"),
+    fasterBtn = document.querySelector("#faster"),
+    introScreen = document.querySelector("#introScreen"),
+    gameScreen = document.querySelector("#gameScreen"),
+    dilithiumLvl = document.querySelector("#dilithiumLvl").
+    torpedoLvl = document.querySelector("#torpedo-count"),
+    level = document.querySelector("#level");
 
 // rocket object
 var rocket = {
@@ -72,9 +74,6 @@ var SOUNDS = {
     "explosion": null
 };
 
-var allowSound = true;
-var fn;
-
 // audio functions
 function toggleSound() {
     allowSound = !allowSound;
@@ -88,7 +87,7 @@ function doneAudio() {
 function playSound(soundObj) {
     // set fn and src variables
     fn = soundObj;
-    var src = "../audio/" + fn + ".mp3";
+    const src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
     if (SOUNDS[fn] !== null) {
@@ -97,7 +96,7 @@ function playSound(soundObj) {
     }
 
     // create audio element and set src
-    var audio = document.createElement("audio");
+    const audio = document.createElement("audio");
     audio.src = src;
 
     // volume setting
@@ -114,8 +113,8 @@ function playSound(soundObj) {
 }
 
 function impact(elem1, elem2) {
-    var rec1 = elem1.getBoundingClientRect();
-    var rec2 = elem2.getBoundingClientRect();
+    const rec1 = elem1.getBoundingClientRect(),
+          rec2 = elem2.getBoundingClientRect();
 
     return (rec1.left < rec2.right) &&
           ((rec1.bottom > rec2.top && rec1.bottom < rec2.bottom) ||
@@ -159,7 +158,7 @@ function fireTorpedoHandler() {
     if (torpedoCount > 0) {
         playTorpedo();
         // calculate max range
-        var range = (torpedo.x - 25 < 200 ? torpedo.x - 25 : 200);
+        const range = (torpedo.x - 25 < 200 ? torpedo.x - 25 : 200);
         torpedo.img.style.left = (torpedo.x - range) + "px";
 
         // update avaiable torpedos
