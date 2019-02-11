@@ -234,7 +234,7 @@ function init() {
     fireBtn.addEventListener("click", showTorpedoHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-
+    explosion.iframe.src = "";
     render();
 }
 
