@@ -3,6 +3,8 @@
 /*jslint node: true */
 "use strict";
 
+
+
 // Arrow key codes
 var UP = 38;
 var DOWN = 40;
@@ -156,18 +158,21 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     if (torpedoCount > 0) {
         playTorpedo();
-        // calculate range as % of 200
-        const x = (torpedo.left - ufo.left + 100) / 200.000; 
-        torpedo.img.style.left = (rocket.x - 200) + "px";
+        // calculate range to target
+        let range = (torpedo.left - ufo.left + 100);
+        // find min
+        range = Math.min(range, 200);
+        torpedo.img.style.left = (rocket.x - range) + "px";
 
         // update avaiable torpedos
         torpedoCount = torpedoCount - 1;
         gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
         // after torpedo finishes, check for impact
-        if (x < 1.0) { // if within range, 
-            // check for impact when impact
-            window.setTimeout(checkForHit, x * 1000);
+        if (range / 200.0 < 1.0) { // if within range,
+            // check for time to impact
+            const percentToImpact = range / 200.0; // percent time to impact
+            window.setTimeout(checkForHit, percentToImpact * 1000);
         }
         window.setTimeout(hideTorpedo, 1200);
     }
@@ -186,6 +191,7 @@ function render() {
     if (rocket.y > 402) { rocket.y = 402; }
     if (ufo.y < 70) { ufo.y = 70; }
     if (ufo.y > 384) { ufo.y = 384; }
+    if (torpedo.x < 0) { torpedo.x = 0; }
     explosion.y = ufo.y - 20;
     // position objects on the screen
     rocket.img.style.left = rocket.x + "px";
