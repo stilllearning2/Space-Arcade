@@ -92,8 +92,8 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    if (fn === "zapsplat-explosion") {
-        audio.volumne = 1.0;
+    if (fn === "explosion") {
+        audio.volumne = 0.99;
     } else {
         audio.volumne = 0.5;
     }
@@ -138,7 +138,7 @@ function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
         // play explosion
-        playSound("zapsplat-explosion");
+        playSound("explosion");
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
@@ -146,9 +146,6 @@ function checkForHit() {
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
         ufo.img.style.visibility = "hidden";
-
-        // play explosion
-        playSound("zapsplat-explosion");
 
         // hide explosion
         window.setTimeout(hideExplosion, 500);  // 5 seconds
