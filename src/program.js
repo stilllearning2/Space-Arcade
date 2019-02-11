@@ -135,8 +135,8 @@ function checkForHit() {
         explosion.iframe.display = "block";
 
         // hide torpedo, ufo
-        torpedo.img.style.display = "none";
-        ufo.img.style.display = "none";
+        torpedo.img.style.visibility = "hidden";
+        ufo.img.style.visibility = "hidden";
 
         // hide explosion
         window.setTimeout(hideExplosion, 500);  // 5 seconds
@@ -271,7 +271,7 @@ function startGameHandler() {
     introScreen.style.display = "block";
     gameScreen.style.display = "none";
     rocket.img.style.display = "block";
-    ufo.img.style.display = "block";
+    ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
     explosion.iframe.frameBorder = 0;
     explosion.iframe.display = "none";
