@@ -287,3 +287,5 @@ render();
 
 window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
+explosion.iframe.frameBorder = 0;
+explosion.iframe.hide();
