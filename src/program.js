@@ -281,6 +281,7 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
+    explosion.iframe.frameBorder = 0;
 }
 render();
 
