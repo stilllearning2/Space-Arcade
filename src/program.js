@@ -12,16 +12,24 @@ var UFOUP = "w";
 var UFODOWN = "z";
 
 // variables
-var velocity = 5;
+var velocity = 2;
+var dilithium = 100;
 var torpedoCount = 10;
+var moves = 0;
+var rand;
+var UFOMIN = 98;
 
 // DOM elements
 var startBtn = document.querySelector("#start");
 var audioBtn = document.querySelector("#audio");
 var fireBtn = document.querySelector("#fire");
+var slowerBtn = document.querySelector("#slower");
+var fasterBtn = document.querySelector("#faster");
 var introScreen = document.querySelector("#introScreen");
 var gameScreen = document.querySelector("#gameScreen");
-var gameInfo = document.querySelector("#torpedo-count");
+var dilithiumLvl = document.querySelector("#dilithiumLvl");
+var torpedoLvl = document.querySelector("#torpedo-count");
+var level = document.querySelector("#level");
 
 // rocket object
 var rocket = {
@@ -90,7 +98,7 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    audio.volume = (fn === "explosion" ? 0.99 : 0.2);
+    audio.volume = (fn === "explosion" ? 0.99 : 0.1);
 
     if (allowSound) {
         // set SOUNDS element = audio and play
@@ -100,7 +108,6 @@ function playSound(soundObj) {
 
     // create event listener for when audio ends
     audio.addEventListener("ended", doneAudio);
-
 }
 
 function startGameHandler() {
@@ -164,7 +171,7 @@ function fireTorpedoHandler() {
 
         // update avaiable torpedos
         torpedoCount = torpedoCount - 1;
-        gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
+        torpedoLvl.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
         // after torpedo finishes, check for impact
         window.setTimeout(checkForHit, 1000);
@@ -177,13 +184,30 @@ function showTorpedoHandler() {
     fireTorpedoHandler();
 }
 
+function updateLevel() {
+    const lvl = velocity - 1;
+    level.innerHTML = "Level: " + lvl;
+}
+
+function levelDownHandler() {
+    if (velocity > 0) {
+        velocity = velocity - 1;
+        updateLevel();
+    }
+}
+
+function levelUpHandler() {
+    velocity = velocity + 1;
+    updateLevel();
+}
+
 function render() {
     // keep objects on screen
     if (rocket.x < 0) { rocket.x = 0; }
-    if (rocket.y < 76) { rocket.y = 76; }
-    if (rocket.x > 502) { rocket.x = 502; }
+    if (rocket.y < 91) { rocket.y = 91; }
+    if (rocket.x > 517) { rocket.x = 502; }
     if (rocket.y > 402) { rocket.y = 402; }
-    if (ufo.y < 70) { ufo.y = 70; }
+    if (ufo.y < UFOMIN) { ufo.y = UFOMIN; }
     if (ufo.y > 384) { ufo.y = 384; }
     if (torpedo.x < 0) { torpedo.x = 0; }
     torpedo.x = rocket.x;
@@ -215,6 +239,34 @@ function keydownHandler(event) {
         ufo.y += velocity;
     }
 
+    if (event.keyCode === UP ||
+            event.keyCode === LEFT ||
+            event.keyCode === DOWN ||
+            event.keyCode === RIGHT) {
+        // each move decreases
+        // dilithium by velocity
+        dilithium = dilithium - velocity / 8.0;
+        dilithiumLvl.innerHTML =
+            "Dilithium fuel: " + dilithium + "%";
+    }
+
+    // move ufo
+    // every five moves, recalc direction
+    if (moves % 10 === 0) {
+        if (ufo.y === UFOMIN) {
+            rand = false;
+        } else {
+            rand = Math.random() >= 0.5;
+        }
+    }
+    // move each turn
+    if (rand === true) {
+        ufo.y -= velocity;
+    } else {
+        ufo.y += velocity;
+    }
+    moves = moves + 1;
+
     render();
 }
 
@@ -222,6 +274,8 @@ function keydownHandler(event) {
 // window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", showTorpedoHandler, false);
+slowerBtn.addEventListener("click", levelDownHandler, false);
+fasterBtn.addEventListener("click", levelUpHandler, false);
 audioBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
 explosion.iframe.src = "";
