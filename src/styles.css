@@ -118,7 +118,7 @@ button:hover {
     z-index: 1;
 }
 
-#explosion {
+#explosionFrame {
     position: absolute;
     top: 50px;
     left: 8px;
