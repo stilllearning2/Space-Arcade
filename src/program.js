@@ -131,6 +131,7 @@ function checkForHit() {
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
+        explosion.style.display = "block";
             
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
@@ -270,7 +271,7 @@ function startGameHandler() {
     rocket.img.style.display = "block";
     ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
-    explosion.style.display = "block";
+    explosion.style.display = "none";
     explosion.iframe.frameBorder = 0;
     explosion.iframe.src="";
 
