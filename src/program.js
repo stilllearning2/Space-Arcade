@@ -88,7 +88,7 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    audio.volume = (fn === "explosion" ? 0.99 : 0.5);
+    audio.volume = (fn === "explosion" ? 0.99 : 0.3);
 
     if (allowSound) {
         // set SOUNDS element = audio and play
