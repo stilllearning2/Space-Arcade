@@ -29,18 +29,21 @@
     <section id="gameScreen">
         <div id="gameUI">
             <div id="gameInfo">
-                <p class="gameProgress" >Dilithium fuel: 100%</p>
-                <p class="gameProgress" >Phasers: 25</p>
+                <p class="gameProgress" id="dilithiumLvl" >Dilithium fuel: 100%</p>
+                <p class="gameProgress" id="phasers">Phasers: 25</p>
                 <p class="gameProgress" id="torpedo-count">Photon torpedoes: 10</p>
+                <p class="gameProgress" id="level">Level: 1</p>
             </div>
             <div id="gameAudio">
                 
             </div>
             <div id="gameControls">
-                <button id="audio">Audio</button>
-                <button id="fire">Fire!</button>
-                <button id="slower">Lvl Dn</button>
-                <button id="faster">Lvl Up</button>
+                <div id="settings">
+                    <button id="audio">Audio</button>
+                    <button id="faster">Lvl Up</button>
+                    <button id="slower">Lvl Dn</button>
+                </div>
+                    <button id="fire">Fire!</button>
             </div>		
         </div>
 
@@ -48,7 +51,7 @@
         <img id="rocket" src="../images/rocket.png" alt="Rocket Ship sprite" >
         <img id="torpedo" src="../images/torpedo.png" alt="torpedo" >
         <img src="../images/ufo.png" alt="UFO" id=ufo>
-        <iframe src="https://giphy.com/embed/ahza0v6s5pSxy" id="explosion"></iframe>
+        <iframe src="*" id="explosion"></iframe>
         
     </section>
 
