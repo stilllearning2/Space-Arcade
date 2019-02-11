@@ -241,6 +241,7 @@ function keydownHandler(event) {
         // each move decreases
         // dilithium by velocity
         dilithium = dilithium - velocity / 8.0;
+        dilithium = Math.round(dilithium * 100) / 100.00;
         dilithiumLvl.innerHTML =
             "Dilithium fuel: " + dilithium + "%";
 
