@@ -85,7 +85,7 @@ function doneAudio() {
 function playSound(soundObj) {
     // set fn and src variables
     fn = soundObj;
-    const src = "../audio/" + fn + ".mp3";
+    var src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
     if (SOUNDS[fn] !== null) {
@@ -94,7 +94,7 @@ function playSound(soundObj) {
     }
 
     // create audio element and set src
-    const audio = document.createElement("audio");
+    var audio = document.createElement("audio");
     audio.src = src;
 
     // volume setting
@@ -121,8 +121,8 @@ function startGameHandler() {
 }
 
 function impact(elem1, elem2) {
-    const rec1 = elem1.getBoundingClientRect();
-    const rec2 = elem2.getBoundingClientRect();
+    var rec1 = elem1.getBoundingClientRect();
+    var rec2 = elem2.getBoundingClientRect();
 
     return (rec1.left < rec2.right) &&
           ((rec1.bottom > rec2.top && rec1.bottom < rec2.bottom) ||
@@ -166,7 +166,7 @@ function fireTorpedoHandler() {
     if (torpedoCount > 0) {
         playTorpedo();
         // calculate max range
-        const range = (torpedo.x - 25 < 200 ? torpedo.x - 25 : 200);
+        var range = (torpedo.x - 25 < 200 ? torpedo.x - 25 : 200);
         torpedo.img.style.left = (torpedo.x - range) + "px";
 
         // update avaiable torpedos
@@ -185,7 +185,7 @@ function showTorpedoHandler() {
 }
 
 function updateLevel() {
-    const lvl = velocity - 1;
+    var lvl = velocity - 1;
     level.innerHTML = "Level: " + lvl;
 }
 
@@ -225,47 +225,51 @@ function render() {
 
 function keydownHandler(event) {
     // handle user keyboard input
-    if (event.keyCode === UP) {
-        rocket.y -= velocity;
-    } else if (event.keyCode === LEFT) {
-        rocket.x -= velocity;
-    } else if (event.keyCode === DOWN) {
-        rocket.y += velocity;
-    } else if (event.keyCode === RIGHT) {
-        rocket.x += velocity;
-    } else if (event.key === UFOUP) {
+    // check for ufo moves
+    if (event.key === UFOUP) {
         ufo.y -= velocity;
     } else if (event.key === UFODOWN) {
         ufo.y += velocity;
-    }
-
-    if (event.keyCode === UP ||
-            event.keyCode === LEFT ||
-            event.keyCode === DOWN ||
-            event.keyCode === RIGHT) {
+    } else if (event.keyCode === UP ||
+               event.keyCode === LEFT ||
+               event.keyCode === DOWN ||
+               event.keyCode === RIGHT) {
+        // check for rocket moves      
+        if (event.keyCode === UP) {
+            rocket.y -= velocity;
+        } else if (event.keyCode === LEFT) {
+            rocket.x -= velocity;
+        } else if (event.keyCode === DOWN) {
+            rocket.y += velocity;
+        } else if (event.keyCode === RIGHT) {
+            rocket.x += velocity;
+        }
+        
         // each move decreases
         // dilithium by velocity
         dilithium = dilithium - velocity / 8.0;
         dilithiumLvl.innerHTML =
             "Dilithium fuel: " + dilithium + "%";
-    }
-
-    // move ufo
-    // every five moves, recalc direction
-    if (moves % 10 === 0) {
-        if (ufo.y === UFOMIN) {
-            rand = false;
-        } else {
-            rand = Math.random() >= 0.5;
+        
+        // move ufo
+        // every five moves, recalc direction
+        if (moves % 10 === 0) {
+            if (ufo.y === UFOMIN) {
+                rand = false;
+            } else {
+                rand = Math.random() >= 0.5;
+            }
         }
-    }
-    // move each turn
-    if (rand === true) {
-        ufo.y -= velocity;
-    } else {
-        ufo.y += velocity;
-    }
-    moves = moves + 1;
+            
+        // move each turn
+        if (rand === true) {
+            ufo.y -= velocity;
+        } else {
+            ufo.y += velocity;
+        }
+            
+        moves = moves + 1;
+    } else 
 
     render();
 }
