@@ -234,7 +234,7 @@ function keydownHandler(event) {
                event.keyCode === LEFT ||
                event.keyCode === DOWN ||
                event.keyCode === RIGHT) {
-        // check for rocket moves      
+        // check for rocket moves
         if (event.keyCode === UP) {
             rocket.y -= velocity;
         } else if (event.keyCode === LEFT) {
@@ -244,13 +244,13 @@ function keydownHandler(event) {
         } else if (event.keyCode === RIGHT) {
             rocket.x += velocity;
         }
-        
+
         // each move decreases
         // dilithium by velocity
         dilithium = dilithium - velocity / 8.0;
         dilithiumLvl.innerHTML =
             "Dilithium fuel: " + dilithium + "%";
-        
+
         // move ufo
         // every five moves, recalc direction
         if (moves % 10 === 0) {
@@ -260,16 +260,16 @@ function keydownHandler(event) {
                 rand = Math.random() >= 0.5;
             }
         }
-            
+
         // move each turn
         if (rand === true) {
             ufo.y -= velocity;
         } else {
             ufo.y += velocity;
         }
-            
+
         moves = moves + 1;
-    } else 
+    }
 
     render();
 }
@@ -281,9 +281,8 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-    explosion.iframe.src = "";
 }
 render();
 
-window.addEventListener("DOMContentLoaded", init, false);
+window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
