@@ -90,7 +90,7 @@ function playSound(soundObj) {
     // create audio element and set src
     var audio = document.createElement("audio");
     audio.src = src;
-    
+
     // volume setting
     if (fn === "zapsplat-explosion") {
         audio.volumne = 1.0;
@@ -139,7 +139,7 @@ function checkForHit() {
     if (impact(torpedo.img, ufo.img)) {
         // play explosion
         playSound("zapsplat-explosion");
-        
+
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
 
@@ -157,7 +157,6 @@ function checkForHit() {
 
 function hideTorpedo() {
     torpedo.img.style.visibility = "hidden";
-    render();
 }
 
 function playTorpedo() {
