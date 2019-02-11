@@ -158,18 +158,16 @@ function fireTorpedoHandler() {
     // 'left' property changes value
     if (torpedoCount > 0) {
         playTorpedo();
-        // calculate range to target
-        let range = (torpedo.left - ufo.left - 100);
-        // find min
-        range = Math.min(range, 200);
-        torpedo.img.style.left = (rocket.x - range) + "px";
+        // calculate max range
+        let range = Math.min(torpedo.x, 200);
+        torpedo.img.style.left = (torpedo.x - range) + "px";
 
         // update avaiable torpedos
         torpedoCount = torpedoCount - 1;
         gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
         // after torpedo finishes, check for impact
-        if (range / 200.0 < 1.0) { // if within range,
+        if (range < 200) { // if within range,
             // check for time to impact
             const percentToImpact = range / 200.0; // percent time to impact
             window.setTimeout(checkForHit, percentToImpact * 1000);
@@ -198,7 +196,7 @@ function render() {
     rocket.img.style.top = rocket.y + "px";
     ufo.img.style.top = ufo.y + "px";
     explosion.iframe.style.top = explosion.y + "px";
-    torpedo.img.style.left = (rocket.x - 10) + "px";
+    torpedo.img.style.left = (rocket.x) + "px";
     torpedo.img.style.top = (rocket.y + 8) + "px";
     torpedo.img.style.visibility = "hidden";
 }
