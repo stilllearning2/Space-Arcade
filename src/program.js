@@ -57,7 +57,7 @@ var torpedo = {
 
 // explosion object
 var explosion = {
-        iframe: document.querySelector("#explosionFrame"),
+        iframe: document.querySelector("#explosion"),
         x: 10,
         y: 0,
         width: 100
@@ -110,6 +110,15 @@ function playSound(soundObj) {
     audio.addEventListener("ended", doneAudio);
 }
 
+function startGameHandler() {
+    // Hide the intro screen, show the game screen
+    introScreen.style.display = "none";
+    gameScreen.style.display = "block";
+    rocket.img.style.display = "block";
+    ufo.img.style.visibility = "visible";
+    torpedo.img.style.visibility = "hidden";
+}
+
 function impact(elem1, elem2) {
     var rec1 = elem1.getBoundingClientRect();
     var rec2 = elem2.getBoundingClientRect();
@@ -120,7 +129,6 @@ function impact(elem1, elem2) {
 }
 
 function hideExplosion() {
-    explosion.iframe.display = "none";
     explosion.iframe.src = "";
 }
 
@@ -132,7 +140,6 @@ function checkForHit() {
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
-        explosion.iframe.display = "block";
 
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
@@ -212,7 +219,7 @@ function render() {
     explosion.iframe.style.top = explosion.y + "px";
     torpedo.img.style.left = (torpedo.x) + "px";
     torpedo.img.style.top = (torpedo.y) + "px";
-    torpedo.img.style.display = "none";
+    torpedo.img.style.visibility = "hidden";
 }
 
 function keydownHandler(event) {
@@ -259,22 +266,10 @@ function keydownHandler(event) {
         } else {
             ufo.y += velocity;
         }
-
         moves = moves + 1;
     }
 
     render();
-}
-
-function startGameHandler() {
-    // Hide the intro screen, show the game screen
-    introScreen.style.display = "block";
-    gameScreen.style.display = "none";
-    rocket.img.style.display = "block";
-    ufo.img.style.visibility = "visible";
-    torpedo.img.style.visibility = "hidden";
-    explosion.iframe.frameBorder = 0;
-    explosion.iframe.display = "none";
 }
 
 function init() {
@@ -289,3 +284,4 @@ render();
 
 window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
+explosion.iframe.frameBorder = 0;
