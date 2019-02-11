@@ -159,7 +159,7 @@ function fireTorpedoHandler() {
     if (torpedoCount > 0) {
         playTorpedo();
         // calculate range to target
-        let range = (torpedo.left - ufo.left + 100);
+        let range = (torpedo.left - ufo.left - 100);
         // find min
         range = Math.min(range, 200);
         torpedo.img.style.left = (rocket.x - range) + "px";
