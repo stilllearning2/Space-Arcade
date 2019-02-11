@@ -115,9 +115,10 @@ function startGameHandler() {
     introScreen.style.display = "none";
     gameScreen.style.display = "block";
     rocket.img.style.display = "block";
-    ufo.img.style.visibility = "visible";
-    torpedo.img.style.visibility = "hidden";
+    ufo.img.style.display = "block";
+    torpedo.img.style.display = "none";
     explosion.iframe.frameBorder = 0;
+    explosion.iframe.display = "none";
 }
 
 function impact(elem1, elem2) {
@@ -130,6 +131,7 @@ function impact(elem1, elem2) {
 }
 
 function hideExplosion() {
+    explosion.iframe.display = "none";
     explosion.iframe.src = "";
 }
 
@@ -141,10 +143,11 @@ function checkForHit() {
 
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
+        explosion.iframe.display = "block";
 
         // hide torpedo, ufo
-        torpedo.img.style.visibility = "hidden";
-        ufo.img.style.visibility = "hidden";
+        torpedo.img.style.display = "none";
+        ufo.img.style.display = "none";
 
         // hide explosion
         window.setTimeout(hideExplosion, 500);  // 5 seconds
@@ -152,7 +155,7 @@ function checkForHit() {
 }
 
 function hideTorpedo() {
-    torpedo.img.style.visibility = "hidden";
+    torpedo.img.style.display = "none";
 }
 
 function playTorpedo() {
@@ -180,7 +183,7 @@ function fireTorpedoHandler() {
 }
 
 function showTorpedoHandler() {
-    torpedo.img.style.visibility = "visible";
+    torpedo.img.style.display = "block";
     fireTorpedoHandler();
 }
 
@@ -220,7 +223,7 @@ function render() {
     explosion.iframe.style.top = explosion.y + "px";
     torpedo.img.style.left = (torpedo.x) + "px";
     torpedo.img.style.top = (torpedo.y) + "px";
-    torpedo.img.style.visibility = "hidden";
+    torpedo.img.style.display = "none";
 }
 
 function keydownHandler(event) {
@@ -287,5 +290,3 @@ render();
 
 window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
-explosion.iframe.frameBorder = 0;
-explosion.iframe.hide();
