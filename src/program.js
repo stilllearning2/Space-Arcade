@@ -229,14 +229,11 @@ function keydownHandler(event) {
     render();
 }
 
-function init() {
-    fireBtn.addEventListener("click", showTorpedoHandler, false);
-    audioBtn.addEventListener("click", toggleSound, false);
-    window.addEventListener("keydown", keydownHandler, false);
-
-    render();
-}
-
 // Initialize objects on the screen
-window.addEventListener("load", init, false);
+//window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
+fireBtn.addEventListener("click", showTorpedoHandler, false);
+audioBtn.addEventListener("click", toggleSound, false);
+window.addEventListener("keydown", keydownHandler, false);
+
+render();
