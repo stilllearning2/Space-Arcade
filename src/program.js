@@ -3,8 +3,6 @@
 /*jslint node: true */
 "use strict";
 
-
-
 // Arrow key codes
 var UP = 38;
 var DOWN = 40;
@@ -161,15 +159,15 @@ function fireTorpedoHandler() {
     if (torpedoCount > 0) {
         playTorpedo();
         // calculate max range
-        let range = (torpedo.x < 200 ? torpedo.x : 200);
-        alert(range);
+        const range = (torpedo.x < 200 ? torpedo.x : 200);
+        window.alert(range);
         torpedo.img.style.left = (torpedo.x - range) + "px";
 
         // update avaiable torpedos
         torpedoCount = torpedoCount - 1;
         gameInfo.innerHTML = "PHOTON TORPEDOES: " + torpedoCount;
 
-        // after torpedo finishes, check for impact          
+        // after torpedo finishes, check for impact
         window.setTimeout(checkForHit, 1000);
         window.setTimeout(hideTorpedo, 1200);
     }
