@@ -230,13 +230,13 @@ function keydownHandler(event) {
 }
 
 function init() {
-    startBtn.addEventListener("click", startGameHandler, false);
     fireBtn.addEventListener("click", showTorpedoHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-    explosion.iframe.src = "";
+
     render();
 }
 
 // Initialize objects on the screen
-document.addEventListener("DOMContentLoaded", init, false);
+window.addEventListener("load", init, false);
+startBtn.addEventListener("click", startGameHandler, false);
