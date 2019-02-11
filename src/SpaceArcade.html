@@ -21,8 +21,7 @@
         <span id="title">Big<br>Space<br>Sprite<br>Mover</span>
         <h3>How to play:</h3>
         <p>Use the arrow keys to move the rocket ship up, down, left, or right. Hit the <strong>Fire!</strong> button to fire a photon torpedo.</p>
-        <div>
-            
+        <div>     
             <button id="start">Engage!</button>
         </div>
     </section>
@@ -32,7 +31,7 @@
             <div id="gameInfo">
                 <p>Dilithium fuel: 100%</p>
                 <p>Phasers: 25</p>
-                <p "torpedo-count">Photon torpedoes: 10</p>
+                <p id="torpedo-count">Photon torpedoes: 10</p>
             </div>
             <div id="gameAudio">
                 <button id="audio">Audio</button>
@@ -44,9 +43,10 @@
 
         <!-- absolutely positioned elements -->
         <img id="rocket" src="../images/rocket.png" alt="Rocket Ship sprite" >
-        <img id="ufo" src="../images/ufo.png" alt="UFO" data-file="photon_torpedo" >
         <img id="torpedo" src="../images/torpedo.png" alt="torpedo" >
-        <img id="explosion" src="../images/explosion.gif" alt="Animated explosion" data-file="explosion" >
+        <img src="../images/ufo.png" alt="UFO" id=ufo>
+        <iframe src="" id="explosion"></iframe>
+        
     </section>
 
     <script src="program.js"></script>
