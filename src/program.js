@@ -78,12 +78,11 @@ function doneAudio() {
 
 function playSound(soundObj) {
     // set fn and src variables
-    fn = soundObj;
+    var fn = soundObj;
     var src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
     if (SOUNDS[fn] !== null) {
-        alert(fn);
         SOUNDS[fn].pause();
         SOUNDS[fn] = null;
     }
@@ -98,7 +97,6 @@ function playSound(soundObj) {
     if (allowSound) {
         // set SOUNDS element = audio and play
         SOUNDS[fn] = audio;
-        audio.setAttribute("data-file", fn);
         audio.play();
     }
 
