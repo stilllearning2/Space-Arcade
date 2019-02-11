@@ -78,7 +78,7 @@ function doneAudio() {
 
 function playSound(soundObj) {
     // set fn and src variables
-    var fn = soundObj;
+    fn = soundObj;
     var src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
@@ -92,7 +92,7 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    if (fn === "explosion") ? audio.volumne = 0.99 : audio.volumne = 0.5;
+    audio.volume = (fn === "explosion" ? 0.99 : 0.5);
 
     if (allowSound) {
         // set SOUNDS element = audio and play
