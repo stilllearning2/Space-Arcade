@@ -64,11 +64,7 @@ var fn;
 
 // audio functions
 function toggleSound() {
-    if (allowSound === true) {
-        allowSound = false;
-    } else {
-        allowSound = true;
-    }
+    allowSound = !allowSound;
 }
 
 function doneAudio() {
@@ -119,10 +115,8 @@ function impact(elem1, elem2) {
     const rec1 = elem1.getBoundingClientRect();
     const rec2 = elem2.getBoundingClientRect();
 
-    return !(
-        rec1.top > rec2.bottom || rec1.right < rec2.left ||
-        rec1.bottom < rec2.top || rec1.left > rec2.right
-    );
+    return (rec12) => rec1.top > rec2.bottom || rec1.right < rec2.left
+                   || rec1.bottom < rec2.top || rec1.left > rec2.right;
 }
 
 function hideExplosion() {
@@ -201,20 +195,15 @@ function keydownHandler(event) {
     // handle user keyboard input
     if (event.keyCode === UP) {
         rocket.y -= velocity;
-    }
-    if (event.keyCode === LEFT) {
+    } else if (event.keyCode === LEFT) {
         rocket.x -= velocity;
-    }
-    if (event.keyCode === DOWN) {
+    } else if (event.keyCode === DOWN) {
         rocket.y += velocity;
-    }
-    if (event.keyCode === RIGHT) {
+    } else if (event.keyCode === RIGHT) {
         rocket.x += velocity;
-    }
-    if (event.key === UFOUP) {
+    } else if (event.key === UFOUP) {
         ufo.y -= velocity;
-    }
-    if (event.key === UFODOWN) {
+    } else if (event.key === UFODOWN) {
         ufo.y += velocity;
     }
 
@@ -222,7 +211,7 @@ function keydownHandler(event) {
 }
 
 // Initialize objects on the screen
-//window.addEventListener("load", init, false);
+// window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", showTorpedoHandler, false);
 audioBtn.addEventListener("click", toggleSound, false);
