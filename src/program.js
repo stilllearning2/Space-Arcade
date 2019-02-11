@@ -189,14 +189,16 @@ function render() {
     if (ufo.y < 70) { ufo.y = 70; }
     if (ufo.y > 384) { ufo.y = 384; }
     if (torpedo.x < 0) { torpedo.x = 0; }
+    torpedo.x = rocket.x;
+    torpedo.y = rocket.y + 8;
     explosion.y = ufo.y - 20;
     // position objects on the screen
     rocket.img.style.left = rocket.x + "px";
     rocket.img.style.top = rocket.y + "px";
     ufo.img.style.top = ufo.y + "px";
     explosion.iframe.style.top = explosion.y + "px";
-    torpedo.img.style.left = (rocket.x) + "px";
-    torpedo.img.style.top = (rocket.y + 8) + "px";
+    torpedo.img.style.left = (torpedo.x) + "px";
+    torpedo.img.style.top = (torpedo.y) + "px";
     torpedo.img.style.visibility = "hidden";
 }
 
