@@ -43,7 +43,6 @@ body { margin: 0;
 }
 
 button {
-	float: left;
 	font-family: spaceAge;
 	font-size: 150%;
 	padding: 4px 7px;
@@ -67,20 +66,27 @@ button:hover {
 	background: -moz-linear-gradient(to top, #acc7a3, #506651);
 	background: linear-gradient(to top, #acc7a3, #506651);	
 }
-#audio, #fire, #slower, #faster {
-    width: 132px;
+
+#slower, #faster {
+    margin-top: 3px;	
+    margin-top: 2px;	
 }
 
-#fire, faster {
-    margin-left: 4px;	
+#audio, #slower, #faster {
+    font-size: 100%;
+    width: 100px;   
+	padding: 2px 4px;
+}
+#start, #fire {
+    font-size: 200%;
+    margin-left: 15px;
+    margin-top: 12px;   
+	padding: 6px 8px;
 }
 
-#slower, faster {
-    margin-top: 4px;	
-}
 #gameScreen {
 	margin: 50px auto;
-	width: 600px;
+	width: 620px;
 	height: 450px;
 	background-image: url("../images/bkg.jpg");
 	display:none;
@@ -122,8 +128,8 @@ button:hover {
 }
 
 #gameUI {
-	width: 560px;
-	height: 50px;
+	width: 580px;
+	height: 65px;
 	padding: 10px 20px;
 	background-color: rgba(0,0,0,0.5);
 	color: white;
@@ -132,8 +138,7 @@ button:hover {
 }
 #gameInfo {
 	width: 320px;
-	height: 80px;
-	font-size: 120%;
+	font-size: 125%;
 	float: left;
 }
 
@@ -142,9 +147,14 @@ button:hover {
     margin-bottom: 0;
 }
 #gameControls {
-	width: 200px;
-	height: 55px;
-	padding-top: 5px;
-	padding-left: 7px;
+	/*width: 125px;*/
+	height: 65px;
 	float:left;
+    margin-left: 5px;
+}
+#settings {
+  	width: 100px;
+	height: 65px;
+	float:left;
+    margin-left: 15px;  
 }
