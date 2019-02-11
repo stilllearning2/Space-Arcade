@@ -44,6 +44,8 @@ var ufo = {
 // torpedo object
 var torpedo = {
         img: document.querySelector("#torpedo"),
+        x: 490,
+        y: 383,
         width: 100
     };
 
