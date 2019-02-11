@@ -88,7 +88,7 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    audio.volume = (fn === "explosion" ? 0.99 : 0.3);
+    audio.volume = (fn === "explosion" ? 0.99 : 0.5);
 
     if (allowSound) {
         // set SOUNDS element = audio and play
@@ -115,8 +115,9 @@ function impact(elem1, elem2) {
     const rec1 = elem1.getBoundingClientRect();
     const rec2 = elem2.getBoundingClientRect();
 
-    return (rec12) => rec1.top > rec2.bottom || rec1.right < rec2.left
-                   || rec1.bottom < rec2.top || rec1.left > rec2.right;
+    return (rec1.left < rec2.right) &&
+          ((rec1.top > rec2.bottom && rec1.top < rec2.top) ||
+           (rec1.bottom > rec2.top && rec1.bottom < rec2.bottom));
 }
 
 function hideExplosion() {
