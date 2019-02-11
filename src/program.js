@@ -64,6 +64,7 @@ var explosion = {
     };
 explosion.iframe.src = "";
 explosion.iframe.frameBorder = "0";
+explosion.iframe.setAttribute("frameBorder", "0");
 
 // audio elements
 var SOUNDS = {
