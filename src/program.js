@@ -144,7 +144,7 @@ function checkForHit() {
 }
 
 function hideTorpedo() {
-    torpedo.img.style.display = "none";
+    torpedo.img.style.visibility = "hidden";
 }
 
 function playTorpedo() {
@@ -172,7 +172,7 @@ function fireTorpedoHandler() {
 }
 
 function showTorpedoHandler() {
-    torpedo.img.style.display = "block";
+    torpedo.img.style.visibility = "visible";
     fireTorpedoHandler();
 }
 
@@ -268,11 +268,11 @@ function keydownHandler(event) {
 
 function startGameHandler() {
     // Hide the intro screen, show the game screen
-    introScreen.style.visibility = "hidden";
-    gameScreen.style.visibility = "visible";
+    introScreen.style.display = "block";
+    gameScreen.style.display = "none";
     rocket.img.style.display = "block";
     ufo.img.style.display = "block";
-    torpedo.img.style.display = "none";
+    torpedo.img.style.visibility = "hidden";
     explosion.iframe.frameBorder = 0;
     explosion.iframe.display = "none";
 }
