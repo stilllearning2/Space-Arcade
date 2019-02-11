@@ -235,5 +235,6 @@ startBtn.addEventListener("click", startGameHandler, false);
 fireBtn.addEventListener("click", showTorpedoHandler, false);
 audioBtn.addEventListener("click", toggleSound, false);
 window.addEventListener("keydown", keydownHandler, false);
+explosion.iframe.src = "";
 
 render();
