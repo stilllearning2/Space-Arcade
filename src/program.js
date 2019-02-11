@@ -110,17 +110,6 @@ function playSound(soundObj) {
     audio.addEventListener("ended", doneAudio);
 }
 
-function startGameHandler() {
-    // Hide the intro screen, show the game screen
-    introScreen.style.display = "none";
-    gameScreen.style.display = "block";
-    rocket.img.style.display = "block";
-    ufo.img.style.display = "block";
-    torpedo.img.style.display = "none";
-    explosion.iframe.frameBorder = 0;
-    explosion.iframe.display = "none";
-}
-
 function impact(elem1, elem2) {
     var rec1 = elem1.getBoundingClientRect();
     var rec2 = elem2.getBoundingClientRect();
@@ -275,6 +264,18 @@ function keydownHandler(event) {
     }
 
     render();
+}
+
+function startGameHandler() {
+    // Hide the intro screen, show the game screen
+        alert("Game Handler");
+    introScreen.style.display = "none";
+    gameScreen.style.display = "block";
+    rocket.img.style.display = "block";
+    ufo.img.style.display = "block";
+    torpedo.img.style.display = "none";
+    explosion.iframe.frameBorder = 0;
+    explosion.iframe.display = "none";
 }
 
 function init() {
