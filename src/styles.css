@@ -1,4 +1,4 @@
-* { margin: 0; 
+* { margin: 0;
 	padding: 0;
 }
 
@@ -53,18 +53,18 @@ button {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 
-	background: -webkit-linear-gradient(top, #a3a3a3, #000);
-	background: -moz-linear-gradient(top, #a3a3a3, #000);
-	background: linear-gradient(top, #a3a3a3, #000);
+	background: -webkit-linear-gradient(to top, #a3a3a3, #000);
+	background: -moz-linear-gradient(to top, #a3a3a3, #000);
+	background: linear-gradient(to top, #a3a3a3, #000);
 
 	-webkit-box-shadow: 0px 5px 8px 3px rgba(255,255,255,0.3);
 	-moz-box-shadow: 0px 5px 8px 3px rgba(255,255,255,0.3);
 	box-shadow: 0px 5px 8px 3px rgba(255,255,255,0.3);
 }
 button:hover {
-	background: -webkit-linear-gradient(top, #acc7a3, #506651);
-	background: -moz-linear-gradient(top, #acc7a3, #506651);
-	background: linear-gradient(top, #acc7a3, #506651);	
+	background: -webkit-linear-gradient(to top, #acc7a3, #506651);
+	background: -moz-linear-gradient(to top, #acc7a3, #506651);
+	background: linear-gradient(to top, #acc7a3, #506651);	
 }
 #gameScreen {
 	margin: 50px auto;
@@ -73,25 +73,42 @@ button:hover {
 	background-image: url("../images/bkg.jpg");
 	display:none;
 	position: relative;
+    z-index: 0;
 }
 #rocket {
 	position: absolute;
-	display: none;
+    z-index: 3;
 }
 #torpedo {
 	position: absolute;
+    z-index: 2;
 
 	/* transition */
-	-webkit-transition: left 0.5s ease-out 0s;
-	-moz-transition: left 0.5s ease-out 0s;
-	transition: left 0.5s ease-out 0s;
+	-webkit-transition: left 1s linear;
+       -moz-transition: left 1s linear;
+        -ms-transition: left 1s linear;
+         -o-transition: left 1s linear;
+            transition: left 1s linear;
 }
+
 #ufo {
 	position: absolute;
-	display: none;
-	top: 100px;
-	left: 30px;
+    top: 70px;
+    left: 0;
+    width: 100px;
+    height: 65px;
+    z-index: 1;
 }
+
+#explosion {
+    position: absolute;
+    top: 50px;
+    left: 8px;
+    width: 100px;
+    height: 120px;
+    z-index: 4;
+}
+
 #gameUI {
 	width: 560px;
 	height: 50px;
@@ -102,8 +119,8 @@ button:hover {
 	line-height: 1em;
 }
 #gameInfo {
-	width: 290px;
-	height: 120px;
+	width: 320px;
+	height: 60px;
 	font-size: 120%;
 	float: left;
 }
@@ -111,13 +128,13 @@ button:hover {
 	width: 120px;
 	height: 55px;
 	padding-top: 5px;
-	padding-left: 10px;
+	padding-left: 7px;
 	float:left;
 }
 #gameControls {
 	width: 100px;
 	height: 55px;
 	padding-top: 5px;
-	padding-left: 10px;
+	padding-left: 7px;
 	float:left;
 }
