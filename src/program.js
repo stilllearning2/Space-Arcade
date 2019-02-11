@@ -271,6 +271,7 @@ function startGameHandler() {
     ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
     explosion.iframe.frameBorder = 0;
+    explosion.iframe.style.display = "block";
     explosion.iframe.style.visibility = "hidden";
 
     render();
