@@ -56,7 +56,7 @@ var explosion = {
 // audio elements
 var SOUNDS = {
     "tos-photon-torpedo-1": null,
-    "zapsplat-explosion": null
+    "explosion": null
 };
 
 var allowSound = true;
