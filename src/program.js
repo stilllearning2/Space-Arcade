@@ -82,7 +82,7 @@ function playSound(soundObj) {
     var src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
-    if (SOUNDS[fn]) {
+    if (SOUNDS[fn] !== null) {
         SOUNDS[fn].pause();
         SOUNDS[fn] = null;
     }
