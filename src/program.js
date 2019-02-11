@@ -79,7 +79,7 @@ function doneAudio() {
 function playSound(soundObj) {
     // set fn and src variables
     fn = soundObj;
-    var src = "../audio/" + fn + ".mp3";
+    const src = "../audio/" + fn + ".mp3";
 
     // if audio is playing, stop it first
     if (SOUNDS[fn] !== null) {
@@ -88,7 +88,7 @@ function playSound(soundObj) {
     }
 
     // create audio element and set src
-    var audio = document.createElement("audio");
+    const audio = document.createElement("audio");
     audio.src = src;
 
     // volume setting
@@ -116,8 +116,8 @@ function startGameHandler() {
 }
 
 function impact(elem1, elem2) {
-    var rec1 = elem1.getBoundingClientRect();
-    var rec2 = elem2.getBoundingClientRect();
+    const rec1 = elem1.getBoundingClientRect();
+    const rec2 = elem2.getBoundingClientRect();
 
     return !(
         rec1.top > rec2.bottom || rec1.right < rec2.left ||
