@@ -265,7 +265,7 @@ function keydownHandler(event) {
 
 function startGameHandler() {
     // Hide the intro screen, show the game screen
-    intdisplay = "none";
+    introScreen.style.display = "none";
     gameScreen.style.visibility = "hidden";
     rocket.img.style.display = "block";
     ufo.img.style.visibility = "visible";
