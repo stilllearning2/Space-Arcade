@@ -124,6 +124,7 @@ button:hover {
     left: 8px;
     width: 100px;
     height: 120px;
+    frame-border = 0;
     z-index: 4;
 }
 
