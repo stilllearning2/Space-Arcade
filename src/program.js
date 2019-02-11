@@ -19,7 +19,7 @@ var UP = 38,
     rand, 
     UFOMIN = 98,
     allowSound = true,
-    fn;
+    fn,
 
 // DOM elements
     startBtn = document.querySelector("#start"),
