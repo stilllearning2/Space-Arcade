@@ -83,6 +83,7 @@ function playSound(soundObj) {
 
     // if audio is playing, stop it first
     if (SOUNDS[fn] !== null) {
+        alert(fn);
         SOUNDS[fn].pause();
         SOUNDS[fn] = null;
     }
@@ -92,11 +93,7 @@ function playSound(soundObj) {
     audio.src = src;
 
     // volume setting
-    if (fn === "explosion") {
-        audio.volumne = 0.99;
-    } else {
-        audio.volumne = 0.5;
-    }
+    if (fn === "explosion") ? audio.volumne = 0.99 : audio.volumne = 0.5;
 
     if (allowSound) {
         // set SOUNDS element = audio and play
