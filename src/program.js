@@ -274,14 +274,16 @@ function keydownHandler(event) {
     render();
 }
 
-// Initialize objects on the screen
-// window.addEventListener("load", init, false);
-startBtn.addEventListener("click", startGameHandler, false);
-fireBtn.addEventListener("click", showTorpedoHandler, false);
-slowerBtn.addEventListener("click", levelDownHandler, false);
-fasterBtn.addEventListener("click", levelUpHandler, false);
-audioBtn.addEventListener("click", toggleSound, false);
-window.addEventListener("keydown", keydownHandler, false);
-explosion.iframe.src = "";
-
+function init() {
+    // Initialize objects on the screen
+    startBtn.addEventListener("click", startGameHandler, false);
+    fireBtn.addEventListener("click", showTorpedoHandler, false);
+    slowerBtn.addEventListener("click", levelDownHandler, false);
+    fasterBtn.addEventListener("click", levelUpHandler, false);
+    audioBtn.addEventListener("click", toggleSound, false);
+    window.addEventListener("keydown", keydownHandler, false);
+    explosion.iframe.src = "";
+}
 render();
+
+window.addEventListener("DOMContentLoaded", init, false);
