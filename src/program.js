@@ -57,7 +57,7 @@ var torpedo = {
 
 // explosion object
 var explosion = {
-        iframe: document.querySelector("#explosion"),
+        iframe: document.querySelector("#explosionFrame"),
         x: 10,
         y: 0,
         width: 100
@@ -284,7 +284,6 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-    explosion.iframe.frameBorder = 0;
 }
 render();
 
