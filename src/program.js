@@ -129,11 +129,11 @@ function hideExplosion() {
 function checkForHit() {
     // check for hit
     if (impact(torpedo.img, ufo.img)) {
-        // play explosion
-        playSound("explosion");
-
         // display explosion
         explosion.iframe.src = "https://giphy.com/embed/ahza0v6s5pSxy";
+            
+        // play explosion
+        playSound("explosion");
             
         // hide torpedo, ufo
         torpedo.img.style.visibility = "hidden";
