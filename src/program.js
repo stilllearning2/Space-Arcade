@@ -118,8 +118,8 @@ function impact(elem1, elem2) {
     const rec2 = elem2.getBoundingClientRect();
 
     return (rec1.left < rec2.right) &&
-          ((rec1.top > rec2.bottom && rec1.top < rec2.top) ||
-           (rec1.bottom > rec2.top && rec1.bottom < rec2.bottom));
+          ((rec1.top < rec2.top && rec1.bottom > rec2.top) ||
+           (rec1.top < rec2.bottom && rec1.bottom > rec2.bottom));
 }
 
 function hideExplosion() {
