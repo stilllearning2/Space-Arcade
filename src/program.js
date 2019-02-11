@@ -270,6 +270,7 @@ function startGameHandler() {
     rocket.img.style.display = "block";
     ufo.img.style.visibility = "visible";
     torpedo.img.style.visibility = "hidden";
+    explosion.style.display = "block";
     explosion.iframe.frameBorder = 0;
     explosion.iframe.src="";
 
