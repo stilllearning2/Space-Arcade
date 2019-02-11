@@ -110,15 +110,6 @@ function playSound(soundObj) {
     audio.addEventListener("ended", doneAudio);
 }
 
-function startGameHandler() {
-    // Hide the intro screen, show the game screen
-    introScreen.style.display = "none";
-    gameScreen.style.display = "block";
-    rocket.img.style.display = "block";
-    ufo.img.style.visibility = "visible";
-    torpedo.img.style.visibility = "hidden";
-}
-
 function impact(elem1, elem2) {
     var rec1 = elem1.getBoundingClientRect();
     var rec2 = elem2.getBoundingClientRect();
@@ -272,16 +263,28 @@ function keydownHandler(event) {
     render();
 }
 
+function startGameHandler() {
+    // Hide the intro screen, show the game screen
+    introScreen.style.display = "none";
+    gameScreen.style.display = "block";
+    rocket.img.style.display = "block";
+    ufo.img.style.visibility = "visible";
+    torpedo.img.style.visibility = "hidden";
+    explosion.iframe.frameBorder = 0;
+    explosion.iframe.style.visibility = "hidden";
+
+    render();
+}
+
 function init() {
     // Initialize objects on the screen
     fireBtn.addEventListener("click", showTorpedoHandler, false);
     slowerBtn.addEventListener("click", levelDownHandler, false);
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
-    window.addEventListener("keydown", keydownHandler, false);
+
+    render();
 }
-render();
 
 window.addEventListener("load", init, false);
 startBtn.addEventListener("click", startGameHandler, false);
-explosion.iframe.frameBorder = 0;
