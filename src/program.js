@@ -23,13 +23,13 @@ var UP = 38,
 
 // DOM elements
     startBtn = document.querySelector("#start"),
-    audioBtn = document.querySelector("#audio").
+    audioBtn = document.querySelector("#audio"),
     fireBtn = document.querySelector("#fire"),
     slowerBtn = document.querySelector("#slower"),
     fasterBtn = document.querySelector("#faster"),
     introScreen = document.querySelector("#introScreen"),
     gameScreen = document.querySelector("#gameScreen"),
-    dilithiumLvl = document.querySelector("#dilithiumLvl").
+    dilithiumLvl = document.querySelector("#dilithiumLvl"),
     torpedoLvl = document.querySelector("#torpedo-count"),
     level = document.querySelector("#level");
 
