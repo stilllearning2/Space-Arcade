@@ -110,8 +110,7 @@ function playSound(soundObj) {
     }
 
     // create event listener for when audio ends
-    window.setTimeout(doneAudio, duration * 1000)
-    //audio.addEventListener("ended", doneAudio);
+    audio.addEventListener("ended", doneAudio);
 }
 
 function impact(elem1, elem2) {
