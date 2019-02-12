@@ -98,6 +98,7 @@ function playSound(soundObj) {
     // create audio element and set src
     const audio = document.createElement("audio");
     audio.src = src;
+    const duration = audio.duration;
 
     // volume setting
     audio.volume = (fn === "explosion" ? 0.99 : 0.1);
@@ -109,7 +110,8 @@ function playSound(soundObj) {
     }
 
     // create event listener for when audio ends
-    audio.addEventListener("ended", doneAudio);
+    window.setTimeout(doneAudio, duration * 1000)
+    //audio.addEventListener("ended", doneAudio);
 }
 
 function impact(elem1, elem2) {
