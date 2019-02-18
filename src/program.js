@@ -4,34 +4,23 @@
 "use strict";
 
 // Arrow key codes
-var UP = 38,
-    DOWN = 40,
-    RIGHT = 39,
-    LEFT = 37,
-    UFOUP = "w",
-    UFODOWN = "z",
+var UP = 38, DOWN = 40, RIGHT = 39, LEFT = 37, UFOUP = "w", UFODOWN = "z";
 
 // variables
-    velocity = 2,
-    dilithium = 100,
-    torpedoCount = 10,
-    moves = 0,
-    rand, 
-    UFOMIN = 98,
-    allowSound = true,
-    fn,
+var velocity = 2, dilithium = 100, torpedoCount = 10, moves = 0, rand;
+var UFOMIN = 98, allowSound = true, fn;
 
 // DOM elements
-    startBtn = document.querySelector("#start"),
-    audioBtn = document.querySelector("#audio"),
-    fireBtn = document.querySelector("#fire"),
-    slowerBtn = document.querySelector("#slower"),
-    fasterBtn = document.querySelector("#faster"),
-    introScreen = document.querySelector("#introScreen"),
-    gameScreen = document.querySelector("#gameScreen"),
-    dilithiumLvl = document.querySelector("#dilithiumLvl"),
-    torpedoLvl = document.querySelector("#torpedo-count"),
-    level = document.querySelector("#level");
+var startBtn = document.querySelector("#start");
+var audioBtn = document.querySelector("#audio");
+var fireBtn = document.querySelector("#fire");
+var slowerBtn = document.querySelector("#slower");
+var fasterBtn = document.querySelector("#faster");
+var introScreen = document.querySelector("#introScreen");
+var gameScreen = document.querySelector("#gameScreen");
+var dilithiumLvl = document.querySelector("#dilithiumLvl");
+var torpedoLvl = document.querySelector("#torpedo-count");
+var level = document.querySelector("#level");
 
 // rocket object
 var rocket = {
@@ -65,13 +54,12 @@ var explosion = {
         width: 100
     };
 
-
-
 // audio elements
 var SOUNDS = {
     "tos-photon-torpedo-1": null,
     "explosion": null
 };
+
 
 // audio functions
 function toggleSound() {
@@ -286,7 +274,7 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
-    hideExplosion(); 
+    hideExplosion();
 }
 
 window.addEventListener("load", init, false);
