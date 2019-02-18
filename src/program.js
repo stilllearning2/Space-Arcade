@@ -64,9 +64,8 @@ var explosion = {
         y: 0,
         width: 100
     };
-explosion.iframe.src = "";
-explosion.iframe.frameBorder = "0";
-explosion.iframe.setAttribute("frameBorder", "0");
+function hideExplosion(); 
+
 
 // audio elements
 var SOUNDS = {
@@ -124,6 +123,8 @@ function impact(elem1, elem2) {
 
 function hideExplosion() {
     explosion.iframe.src = "";
+    explosion.iframe.frameBorder = "0";
+    explosion.iframe.setAttribute("frameBorder", "0");
 }
 
 function checkForHit() {
