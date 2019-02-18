@@ -64,7 +64,7 @@ var explosion = {
         y: 0,
         width: 100
     };
-function hideExplosion(); 
+
 
 
 // audio elements
@@ -286,6 +286,7 @@ function init() {
     fasterBtn.addEventListener("click", levelUpHandler, false);
     audioBtn.addEventListener("click", toggleSound, false);
     window.addEventListener("keydown", keydownHandler, false);
+    hideExplosion(); 
 }
 
 window.addEventListener("load", init, false);
